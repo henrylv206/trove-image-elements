@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# CONTEXT: GUEST during CONSTRUCTION as ROOT
+# PURPOSE: Install controller base required packages
+
+set -ex
+
+export DEBIAN_FRONTEND=noninteractive
+
+yum install -y redis
+
+mkdir /etc/redis
+ln -s /etc/redis.conf /etc/redis/redis.conf
