@@ -4,5 +4,5 @@ set -e
 set -o xtrace
 
 # Enable and start service
-systemctl enable mysqlb.service
-systemctl start mysqlb.service
+systemctl enable mysqld.service
+systemctl start mysqld.service
