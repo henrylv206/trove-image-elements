@@ -12,9 +12,6 @@ if [ "${DISTRO}" = "rhel" ]; then
 fi
 
 if [ "${DISTRO}" = "centos" ]; then
-  #yum -y install https://rdo.fedorapeople.org/rdo-release.rpm
-  #sed -i 's/http:\/\/repos.fedorapeople.org\/repos\/openstack\/openstack-juno\/epel-Derived\ from\ Red\ Hat\ Enterprise\ Linux\ 7.1\ (Source)\//http:\/\/repos.fedorapeople.org\/repos\/openstack\/openstack-juno\/epel-7\//g' /etc/yum.repos.d/rdo-release.repo
-  #yum -y install -y https://repos.fedorapeople.org/repos/openstack/openstack-juno/rdo-release-juno-1.noarch.rpm
   yum -y install https://repos.fedorapeople.org/repos/openstack/openstack-liberty/rdo-release-liberty-2.noarch.rpm
   yum -y update
   sed -i -e 's/^Defaults.*requiretty/# Defaults requiretty/g' /etc/sudoers
@@ -22,7 +19,3 @@ fi
 
 yum -y install openstack-trove-guestagent python-troveclient python-netifaces
 
-yum -y install http://repo.mysql.com//mysql57-community-release-el7-7.noarch.rpm
-
-yum-config-manager --enable mysql56-community
-yum-config-manager --disable mysql57-community

@@ -6,6 +6,11 @@
 set -e
 set -o xtrace
 
+yum -y install http://repo.mysql.com//mysql57-community-release-el7-7.noarch.rpm
+
+yum-config-manager --enable mysql56-community
+yum-config-manager --disable mysql57-community
+
 yum -y install mysql mysql-server
 mkdir /etc/my.cnf.d
 echo "" >> /etc/my.cnf
