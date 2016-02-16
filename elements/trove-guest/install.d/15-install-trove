@@ -23,3 +23,6 @@ fi
 yum -y install openstack-trove-guestagent python-troveclient python-netifaces
 
 yum -y install http://repo.mysql.com//mysql57-community-release-el7-7.noarch.rpm
+
+yum-config-manager --enable mysql56-community
+yum-config-manager --disable mysql57-community

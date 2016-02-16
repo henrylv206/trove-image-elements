@@ -1,12 +1,20 @@
 [Unit]
-Description=OpenStack Trove Guest
-After=syslog.target network.target cloud-init.service
+Description=Tesora DBaaS Platform guest agent
+Requires=cloud-final.service
+After=syslog.target network.target cloud-final.service
 
 [Service]
 Type=simple
 User=trove
-ExecStart=/usr/bin/trove-guestagent --config-file /etc/trove-guestagent.conf --config-file /etc/guest_info
-Restart=on-failure
+
+# PgSql doesn't play nice with PrivateTmp
+PrivateTmp=false
+
+ExecStartPre=/bin/sleep 20
+ExecStartPre=/usr/bin/sudo chgrp trove /etc/trove/conf.d/guest_info.conf /etc/trove/conf.d/trove-guestagent.conf
+ExecStart=/usr/bin/trove-guestagent --config-dir /etc/trove/conf.d
 
 [Install]
 WantedBy=multi-user.target
+
+

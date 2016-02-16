@@ -9,4 +9,4 @@ set -o xtrace
 yum -y install mysql mysql-server
 mkdir /etc/mysql
 mkdir /etc/mysql/conf.d
-ln -s /etc/my.cnf /etc/mysql/my.cnf
+#ln -s /etc/my.cnf /etc/mysql/my.cnf
